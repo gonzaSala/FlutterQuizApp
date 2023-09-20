@@ -23,6 +23,7 @@ class _QuizScreenState extends State<QuizScreen> {
       body: Container(
         margin: const EdgeInsets.symmetric(horizontal: 16, vertical: 32),
         child: Column(
+          mainAxisAlignment: MainAxisAlignment.spaceAround,
           children: [
             const Text(
               'Preguntas y respuestas',
@@ -33,6 +34,7 @@ class _QuizScreenState extends State<QuizScreen> {
             ),
             questionWidget(),
             answerList(),
+            nextButton(),
           ],
         ),
       ),
@@ -108,6 +110,45 @@ class _QuizScreenState extends State<QuizScreen> {
           }
         },
       ),
+    );
+  }
+
+  nextButton() {
+    bool siguientePregunta = false;
+    if (currentQuestionIndex == questionList.length - 1) {
+      siguientePregunta = true;
+    }
+
+    return Container(
+      width: MediaQuery.of(context).size.width * 0.5,
+      margin: const EdgeInsets.symmetric(vertical: 8),
+      height: 48,
+      child: ElevatedButton(
+        child: Text(siguientePregunta ? "Submit" : 'Next'),
+        style: ElevatedButton.styleFrom(
+          shape: const StadiumBorder(),
+          primary: Colors.blueAccent,
+          onPrimary: Colors.white,
+        ),
+        onPressed: () {
+          if (siguientePregunta) {
+            //display score
+            showDialog(context: context, builder: (_) => mostrarScore());
+          } else {
+            //next
+            setState(() {
+              selectedAnswer = null;
+              currentQuestionIndex++;
+            });
+          }
+        },
+      ),
+    );
+  }
+
+  mostrarScore() {
+    return AlertDialog(
+      title: Text(score.toString()),
     );
   }
 }
