@@ -147,8 +147,32 @@ class _QuizScreenState extends State<QuizScreen> {
   }
 
   mostrarScore() {
+    bool aprobado = false;
+
+    if (score >= questionList.length * 0.6) {
+      aprobado = true;
+    }
+
+    String title = aprobado ? 'Aprobaste :,)' : 'No aprobaste :,(';
+
     return AlertDialog(
-      title: Text(score.toString()),
+      title: Text(
+        title + " |Score is $score",
+        style: TextStyle(
+          color: aprobado ? Colors.greenAccent : Colors.redAccent,
+        ),
+      ),
+      content: ElevatedButton(
+        child: const Text("Jugar de nuevo?"),
+        onPressed: () {
+          Navigator.pop(context);
+          setState(() {
+            currentQuestionIndex = 0;
+            score = 0;
+            selectedAnswer = null;
+          });
+        },
+      ),
     );
   }
 }

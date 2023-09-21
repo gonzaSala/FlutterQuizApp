@@ -15,32 +15,32 @@ class answer {
 List<question> getQuestions() {
   List<question> list = [];
   //Agregamos las preguntas y respuestas
-  list.add(question('Cuantos son 1000 gramos?', [
-    answer('1 Kg', true),
-    answer('10 Kg', false),
-    answer('0,5 Kg', false),
-    answer('100 Kg', false),
+  list.add(question('¿Cuál es la capital de Filipinas?', [
+    answer('Manila', true),
+    answer('Tirana', false),
+    answer('Berlin', false),
+    answer('Kabul', false),
   ]));
 
-  list.add(question('Cuantos son 100 gramos?', [
-    answer('1 Kg', false),
-    answer('10 Kg', false),
-    answer('0,1 Kg', true),
-    answer('100 Kg', false),
+  list.add(question('¿Cuál es el río más caudaloso del mundo?', [
+    answer('Yangtsé', false),
+    answer('Orinoco', false),
+    answer('Amazonas', true),
+    answer('Paraná', false),
   ]));
 
-  list.add(question('Cuantos son 10 gramos?', [
-    answer('1 Kg', false),
-    answer('10 Kg', false),
-    answer('0,01 Kg', true),
-    answer('100 Kg', false),
+  list.add(question('¿Cuál es la montaña más alta de Europa?', [
+    answer('Monte Elbrús', true),
+    answer('Mont Blanc', false),
+    answer('Everest', false),
+    answer('Monte Dij-Tau', false),
   ]));
 
-  list.add(question('Cuantos son 10000 gramos?', [
-    answer('1 Kg', false),
-    answer('10 Kg', true),
-    answer('0,5 Kg', false),
-    answer('100 Kg', false),
+  list.add(question('¿En qué país se encuentra el pico Aconcagua?', [
+    answer('Chile', false),
+    answer('Argentina', true),
+    answer('Perú', false),
+    answer('Ecuador', false),
   ]));
 
   return list;
